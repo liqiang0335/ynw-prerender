@@ -1,21 +1,23 @@
 {
-  "name": "ynw-prerender",
+  "name": "ynwbrowser",
   "version": "0.0.1",
   "description": "pre-render static page for SPA",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "init": "node bin/index --init"
+  },
   "keywords": ["ynw", "yueniu"],
   "author": "",
   "bin": {
-    "ynw-render": "./bin/index.js"
+    "ynwbrowser": "./bin/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/liqiang0335/ynw-prerender.git"
+    "url": "git+https://github.com/liqiang0335/ynwbrowser.git"
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/liqiang0335/ynw-prerender/issues"
+    "url": "https://github.com/liqiang0335/ynwbrowser/issues"
   },
-  "homepage": "https://github.com/liqiang0335/ynw-prerender#readme"
+  "homepage": "https://github.com/liqiang0335/ynwbrowser#readme"
 }
