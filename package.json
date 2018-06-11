@@ -4,9 +4,13 @@
   "description": "pre-render static page for SPA",
   "main": "index.js",
   "scripts": {
-    "init": "node bin/index --init"
+    "init": "node bin/index --init",
+    "tip": "node bin/index --tip"
   },
-  "keywords": ["ynw", "yueniu"],
+  "keywords": [
+    "ynw",
+    "yueniu"
+  ],
   "author": "",
   "bin": {
     "ynwbrowser": "./bin/index.js"
@@ -19,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/liqiang0335/ynwbrowser/issues"
   },
-  "homepage": "https://github.com/liqiang0335/ynwbrowser#readme"
+  "homepage": "https://github.com/liqiang0335/ynwbrowser#readme",
+  "dependencies": {
+    "puppeteer": "^1.5.0"
+  }
 }
