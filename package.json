@@ -1,0 +1,21 @@
+{
+  "name": "ynw-prerender",
+  "version": "0.0.1",
+  "description": "pre-render static page for SPA",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": ["ynw", "yueniu"],
+  "author": "",
+  "bin": {
+    "ynw-render": "./bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liqiang0335/ynw-prerender.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liqiang0335/ynw-prerender/issues"
+  },
+  "homepage": "https://github.com/liqiang0335/ynw-prerender#readme"
+}
