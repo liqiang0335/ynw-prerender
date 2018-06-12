@@ -1,11 +1,10 @@
 {
   "name": "ynwbrowser",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "use headless chrome do something",
   "main": "index.js",
   "scripts": {
     "i": "node bin/index --init",
-    "h": "node bin/index --help",
     "r": "node bin/index --render"
   },
   "keywords": [
@@ -15,7 +14,7 @@
     "chrome",
     "SEO"
   ],
-  "author": "",
+  "author": "liqiang0335",
   "bin": {
     "ynwbrowser": "./bin/index.js"
   },
