@@ -4,8 +4,8 @@
 
 module.exports = {
   common: {
-    dist: "",
-    replace: []
+    dist: "", //存放位置
+    replace: [] //内容正则替换
   },
   routes: [
     { url: "http://www.baidu.com" },

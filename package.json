@@ -1,11 +1,12 @@
 {
   "name": "ynwbrowser",
   "version": "0.0.1",
-  "description": "pre-render static page for SPA",
+  "description": "use headless chrome do something",
   "main": "index.js",
   "scripts": {
-    "init": "node bin/index --init",
-    "tip": "node bin/index --tip"
+    "i": "node bin/index --init",
+    "h": "node bin/index --help",
+    "r": "node bin/index --render"
   },
   "keywords": [
     "ynw",
