@@ -4,12 +4,8 @@
 
 module.exports = {
   common: {
-    dist: "./dist",
+    dist: "./test",
     replace: []
   },
-  routes: [
-    { url: "http://www.baidu.com", name: "baidu.html" },
-    { url: "http://www.qq.com", name: "qq.html" },
-    { url: "http://www.taobao.com", name: "taobao.html" }
-  ]
+  routes: [{ url: "http://www.jsgaotie.com", name: "jsgaotie.html" }]
 };
