@@ -19,6 +19,7 @@ const exists = util.promisify(fs.exists);
 const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 const readdir = util.promisify(fs.readdir);
+const mkdir = util.promisify(fs.mkdir);
 
 /**
  * Open a page and block media assets
@@ -49,5 +50,6 @@ module.exports = {
   readFile,
   writeFile,
   readdir,
+  mkdir,
   createCleanPage
 };

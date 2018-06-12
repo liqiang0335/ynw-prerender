@@ -9,17 +9,22 @@ const parseConfig = context => {
   const configFile = path.join(cwd, "ynw.browser");
   const config = require(configFile);
   const { routes, common } = config;
-  return routes.map(item => {
-    item = { ...common, ...item }; // mixin common setup , item's priority is greater than common
+  const defaultValue = { enable: true, handler: f => f };
+  const handler = item => {
+    // mixin default and common, item's priority is greater
+    item = { ...defaultValue, ...common, ...item };
     item.dist = path.join(cwd, item.dist); // relative to absolute
     item.target = path.join(item.dist, item.name);
     return item;
-  });
+  };
+  return routes.map(handler).filter(it => it.enable);
 };
 
 const render = async (browser, context, config) => {
-  const { createCleanPage, writeFile } = context;
-  const { dist, url, target } = config;
+  const { createCleanPage, writeFile, exists, mkdir } = context;
+  const { dist, url, target, handler } = config;
+
+  // get Content from page
   const page = await createCleanPage({ browser });
   page.setViewport({ width: 1400, height: 900 });
   await page.goto(url, { waitUntil: "domcontentloaded" });
@@ -28,20 +33,28 @@ const render = async (browser, context, config) => {
     const content = document.querySelector("html").outerHTML;
     return Promise.resolve(content);
   });
-  await writeFile(target, html);
-  console.log(`>>> render ${url} ok`);
+
+  // write Content
+  if (!(await exists(dist))) {
+    await mkdir(dist);
+  }
+  await writeFile(target, handler(html));
+  console.log(`>>> render ${url} done`);
   await page.close();
-  return Promise.resolve();
+};
+
+const printLine = () => {
+  console.log("---------------------------------");
 };
 
 module.exports = async context => {
   const configs = parseConfig(context);
-  const browser = await puppeteer.launch({
-    headless: true
-  });
-  const task = configs.map(config => render(browser, context, config));
-  Promise.all(task, f => console.log("all done"));
-  setTimeout(() => {
-    browser.close();
-  }, 10000);
+  const browser = await puppeteer.launch({ headless: true });
+  printLine();
+  for (var i = 0; i < configs.length; i++) {
+    const config = configs[i];
+    await render(browser, context, config);
+  }
+  printLine();
+  browser.close();
 };

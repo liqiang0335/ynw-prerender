@@ -11,7 +11,6 @@ const context = { cwd, ...commands, ...fns };
  * short key map
  */
 const commandsMap = {
-  h: "help",
   i: "init",
   r: "render"
 };
