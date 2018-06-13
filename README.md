@@ -1,28 +1,30 @@
 # ynwbrowser
 
-- ynwbrowser --version 版本号
-- ynwbrowser --init 初始化
-- ynwbrowser --render 渲染页面
-
-### install
+### 安装
 
 ```shell
 npm i -g ynwbrowser
 ```
 
-### pre-render
+### 命令行
 
-> pre-render static page for SPA
+- ynwbrowser --version 版本号
+- ynwbrowser --init 初始化
+- ynwbrowser --render 渲染页面
+
+### 使用
+
+> 使用场景：将单页应用中的每个路由预渲染成静态页面
 
 ```shell
-# add config file to current working directory
+# 添加配置文件到工作目录
 ynwbrowser --init
 
-# Render page
+# 执行渲染
 ynwbrowser --render
 ```
 
-### config
+### 配置说明
 
 ```js
 /**
