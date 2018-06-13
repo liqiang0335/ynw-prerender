@@ -1,10 +1,11 @@
 {
   "name": "ynwbrowser",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "use headless chrome do something",
   "main": "index.js",
   "scripts": {
     "i": "node bin/index --init",
+    "v": "node bin/index --version",
     "r": "node bin/index --render"
   },
   "keywords": [

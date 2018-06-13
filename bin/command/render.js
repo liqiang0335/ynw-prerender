@@ -43,18 +43,18 @@ const render = async (browser, context, config) => {
   await page.close();
 };
 
-const printLine = () => {
-  console.log("---------------------------------");
+const printLine = msg => {
+  console.log(`---------------- ${msg} -----------------`);
 };
 
 module.exports = async context => {
   const configs = parseConfig(context);
   const browser = await puppeteer.launch({ headless: true });
-  printLine();
+  printLine("BEGIN");
   for (var i = 0; i < configs.length; i++) {
     const config = configs[i];
     await render(browser, context, config);
   }
-  printLine();
+  printLine("END");
   browser.close();
 };

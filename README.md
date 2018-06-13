@@ -1,5 +1,9 @@
 # ynwbrowser
 
+- ynwbrowser --version 版本号
+- ynwbrowser --init 初始化
+- ynwbrowser --render 渲染页面
+
 ### install
 
 ```shell
