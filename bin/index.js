@@ -13,6 +13,7 @@ const context = { cwd, ...commands, ...fns };
 const commandsMap = {
   i: "init",
   v: "version",
+  h: "help",
   r: "render"
 };
 

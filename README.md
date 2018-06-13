@@ -1,5 +1,7 @@
 # ynwbrowser
 
+> 使用场景：将单页应用中的每个路由预渲染成静态页面
+
 ### 安装
 
 ```shell
@@ -11,18 +13,6 @@ npm i -g ynwbrowser
 - ynwbrowser --version 版本号
 - ynwbrowser --init 初始化
 - ynwbrowser --render 渲染页面
-
-### 使用
-
-> 使用场景：将单页应用中的每个路由预渲染成静态页面
-
-```shell
-# 添加配置文件到工作目录
-ynwbrowser --init
-
-# 执行渲染
-ynwbrowser --render
-```
 
 ### 配置说明
 
