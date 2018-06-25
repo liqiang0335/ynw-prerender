@@ -10,6 +10,12 @@
  * common的配置会应用于每个routes项
  * routes项的同名配置会覆盖common中的配置
  * 所有页面按顺序同步渲染，处理时间和页面数量成正比
+ *
+ *
+ * 命令行：
+ * ynwbrowser --init(i) : 添加配置文件
+ * ynwbrowser --render(r) : 开始渲染
+ * ynwbrowser --render type=queue : 单线程渲染
  */
 
 module.exports = {

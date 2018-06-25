@@ -14,7 +14,8 @@ const commandsMap = {
   i: "init",
   v: "version",
   h: "help",
-  r: "render"
+  r: "render",
+  t: "type"
 };
 
 (async function() {
