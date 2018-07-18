@@ -22,8 +22,9 @@ npm i -g ynwbrowser
  * @param url: String  网址
  * @param name: String 文件名
  * @param enable: Boolean 是否渲染(默认true)
- * @param dist: String  保存位置
+ * @param dist: String  保存文件夹路径
  * @param handler: Function 内容处理(默认f=>f)
+ * @param pipe: Function 内容处理(默认f=>f)
  *
  * 注意事项：
  * common的配置会应用于每个routes项
@@ -39,7 +40,8 @@ module.exports = {
   routes: [
     {
       url: "http://www.example.com",
-      name: "example.html"
+      name: "example.html",
+      pipe: f => f
     }
   ]
 };
