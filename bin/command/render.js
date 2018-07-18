@@ -23,7 +23,7 @@ const parseConfig = context => {
 const render = async (browser, context, config) => {
   return new Promise(async resolve => {
     const { createCleanPage, writeFile, exists, mkdir } = context;
-    const { url, target, handler } = config;
+    const { url, target, handler, pipe } = config;
 
     // get Content from page
     const page = await createCleanPage({ browser });
@@ -35,7 +35,11 @@ const render = async (browser, context, config) => {
       return Promise.resolve(content);
     });
 
-    await writeFile(target, handler(html));
+    let contents = handler(html);
+    if (typeof pipe === "function") {
+      contents = pipe(contents);
+    }
+    await writeFile(target, contents);
     console.log(`>>> render ${url} done`);
     resolve();
   });
