@@ -1,6 +1,6 @@
 {
   "name": "ynwbrowser",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "description": "use headless chrome do something",
   "main": "index.js",
   "scripts": {

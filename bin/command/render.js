@@ -41,6 +41,7 @@ const render = async (browser, context, config) => {
     }
     await writeFile(target, contents);
     console.log(`>>> render ${url} done`);
+    await page.close();
     resolve();
   });
 };
