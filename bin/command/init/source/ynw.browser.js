@@ -36,7 +36,8 @@ module.exports = {
   routes: [
     {
       url: "http://www.example.com",
-      name: "example.html"
+      name: "example.html",
+      pipe: html => html
     }
   ]
 };
