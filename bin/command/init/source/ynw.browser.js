@@ -21,7 +21,17 @@
 module.exports = {
   common: {
     dist: "./test",
-    handler: html => html
+    handler: html => {
+      //修改路由
+      html = html.replace(/#?\/question/g, "/web/question.htm");
+      html = html.replace(/#?\/home/g, "/");
+      //修改路径
+      html = html.replace(/<.+?.+webpack-dev-server.js.+<\/script>/, "");
+      html = html.replace(/http:\/\/localhost:9999/g, "/public/home");
+      html = html.replace(/\/dist\/assets/g, "/public/home/dist/assets");
+      html = html.replace(/index.bundle.js/g, "script.bundle.js");
+      return html;
+    }
   },
   routes: [
     {
