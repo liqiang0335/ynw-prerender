@@ -2,17 +2,22 @@ const fs = require("fs");
 const util = require("util");
 
 /**
- * Get params from command line
- * "--dep" be equal to "dep=true"
+ * 获取命令行的参数
+ * dep 等价于 dep=true
+ * --dep 等价于 dep=true
  */
 function getParams(arr) {
   const reg = /=|--/i;
-  return arr.filter(it => reg.test(it)).reduce((acc, cur) => {
+  const result = arr.filter((_, i) => i > 1).reduce((acc, cur) => {
+    if (!reg.test(cur)) {
+      cur = `${cur}=true`;
+    }
     cur = cur.replace(/--([^\s]+)/, "$1=true");
     const [key, value] = cur.split("=");
     acc[key] = value;
     return acc;
   }, {});
+  return result;
 }
 
 const exists = util.promisify(fs.exists);
