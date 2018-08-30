@@ -22,24 +22,35 @@ const parseConfig = context => {
 
 const render = async (browser, context, config) => {
   return new Promise(async resolve => {
-    const { createCleanPage, writeFile, exists, mkdir } = context;
-    const { url, target, handler, pipe } = config;
+    const { createCleanPage, writeFile } = context;
+    const { url, target, handler, pipe, visitor } = config;
 
     // get Content from page
     const page = await createCleanPage({ browser });
     page.setViewport({ width: 1400, height: 900 });
     await page.goto(url, { waitUntil: "domcontentloaded" });
     await page.waitFor(2000);
-    const html = await page.evaluate(f => {
+
+    let html = await page.evaluate(f => {
       const content = document.querySelector("html").outerHTML;
       return Promise.resolve(content);
     });
 
-    let contents = handler(html);
-    if (typeof pipe === "function") {
-      contents = pipe(contents);
+    //visitor
+    if (typeof visitor === "function") {
+      html = html
+        .replace(/<.+?>/g, match => visitor(match))
+        .replace(/>.+?</g, match => visitor(match));
     }
-    await writeFile(target, contents);
+    //replace
+    if (typeof handler === "function") {
+      html = handler(html);
+    }
+    if (typeof pipe === "function") {
+      html = pipe(html);
+    }
+
+    await writeFile(target, html);
     console.log(`>>> render ${url} done`);
     await page.close();
     resolve();
@@ -57,9 +68,9 @@ const prrintDuration = startTime => {
 };
 
 module.exports = async context => {
-  const { type } = context;
+  const { type, show } = context;
   const configs = parseConfig(context);
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({ headless: !show });
   const startTime = Date.now();
   printLine("BEGIN");
 

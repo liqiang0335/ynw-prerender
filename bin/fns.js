@@ -2,9 +2,8 @@ const fs = require("fs");
 const util = require("util");
 
 /**
- * 获取命令行的参数
- * dep 等价于 dep=true
- * --dep 等价于 dep=true
+ * Get params from command line
+ * "--dep" be equal to "dep=true"
  */
 function getParams(arr) {
   const reg = /=|--/i;
